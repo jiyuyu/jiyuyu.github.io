@@ -1,0 +1,29 @@
+body {
+  margin-top: 50px;
+}
+.logo {
+  display: inline-block;
+  width: 63px;
+  height: 42px;
+  background: url("../img/hdr-spr.png") 0 -512px no-repeat;
+  margin-top: -11px;
+}
+
+@media screen and (min-width: 992px) {
+  .main > .container > .row {
+    margin-bottom: 10px;
+  }
+  .login-menu {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 991px) and (min-width:768px) {
+  .main > .container > .row .row {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 767px){
+  .main > .container .row .row > div {
+    margin-bottom: 10px;
+  }
+}
