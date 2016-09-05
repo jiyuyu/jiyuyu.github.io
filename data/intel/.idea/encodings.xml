@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/css/alerts.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/badges.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/bootstrap.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/bootstrap.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/breadcrumbs.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/button-groups.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/buttons.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/carousel.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/close.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/code.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/component-animations.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/dropdowns.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/forms.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/glyphicons.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/grid.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/input-groups.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/intel.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/intel.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/jumbotron.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/labels.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/list-group.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/media.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/media.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/mixins.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/mixins.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/modals.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/navbar.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/navs.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/normalize.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/normalize.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/pager.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/pagination.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/panels.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/popovers.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/print.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/print.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/progress-bars.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/responsive-embed.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/responsive-embed.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/responsive-utilities.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/scaffolding.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/tables.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/theme.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/theme.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/thumbnails.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/tooltip.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/type.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/utilities.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/variables.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/variables.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/css/wells.less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/fonts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/img" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,181 @@
+@import "bootstrap.less";
+//用户自定义样式
+
+.logo {
+  width: 63px;
+  height: 42px;
+  padding: 0px;
+  margin-top: -10px;
+  display: inline-block;
+  background: url(../img/hdr-spr.png) 0 -512px no-repeat;
+}
+
+.main {
+  background: @blue-dark;
+  color: @text-color-light;
+  a {
+    color: @text-color-light;
+    &:hover {
+      color: lighten(@blue-lighter, 40%);
+    }
+  }
+}
+
+body {
+  margin-top: @navbar-height;
+}
+
+@media screen and (min-width: @screen-md-min) {
+  .main > .container > .row {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .main > .container > .row .row {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  .main > .container > .row .row > div {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .login-dropdown {
+    width: 400px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 7px 7px 3px darken(@blue-darker, 3%);
+}
+
+.community {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding-top: 5px;
+  background: url("../img/social_sprite_smushed.png") 0 -70px no-repeat;
+}
+
+//小图标准蓝色背景
+.small-bg-color {
+  background: @blue-std;
+  padding: 25px 15px;
+}
+
+.border-left {
+  border-left: 2px solid darken(@blue-lighter, 5%);
+}
+
+@media screen and (min-width: @screen-md-min) {
+  .small-margin-bottom {
+    margin-bottom: 35px;
+  }
+}
+
+@media screen  and (max-width: @screen-xs-max) {
+  .small-img-width {
+    width: 100%;
+  }
+}
+
+.padding-big {
+  padding: 20px 20px;
+}
+
+.big-a {
+  display: block;
+  width: 80%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: @blue-lighter;
+}
+
+@media screen and (min-width: @screen-sm-min) {
+  .small-position {
+    position: absolute;
+    top: 200px;
+    left: 30px;
+  }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  .big-bg-color {
+    background: @blue-std;
+  }
+
+  .small-box-shadow {
+    box-shadow: 4px 4px 2px darken(@blue-darker, 2%);
+  }
+
+  body {
+    font-size: 10px;
+  }
+}
+
+//小图遮罩层处理
+.shade {
+  position: absolute;
+  bottom: 0px;
+  width: 92.4%;
+  height: 40px;
+  background: #000000;
+  opacity: 0.6;
+  color: #ffffff;
+  line-height: 40px;
+  padding: 0px 15px;
+}
+
+.li-height {
+  margin: 5px 0 5px 10px
+}
+
+.shade-click {
+  position: absolute;
+  bottom: 0px;
+  width: 92.4%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.6;
+  color: #ffffff;
+  padding: 10px 15px;
+}
+
+.masking-parent {
+  background-color: @blue-light;
+  position: relative;
+  .masking-text {
+    padding: 15px;
+  }
+  @media screen and (min-width: @screen-md-min) {
+    .masking-text {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+.masking-div-parent{
+  position: relative;
+  .masking-div{
+    position: absolute;
+    top:82%;
+    cursor: pointer;
+    left:0;
+    bottom:0;
+    //opacity: 0.5;
+    background: rgba(0,0,0,.5);
+    padding:0 10px 10px 10px;
+    width:100%;
+  }
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+.ul-height{
+  height:100%;
+}
