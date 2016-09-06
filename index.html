@@ -172,13 +172,13 @@
        /*移动端*/
        var  judge=null;
        $("body").on("touchstart", function(e) {
-          // e.preventDefault();
+          e.preventDefault();
           judge=true;
           startX = e.originalEvent.changedTouches[0].pageX,
           startY = e.originalEvent.changedTouches[0].pageY;
         });
         $("body").on("touchmove", function(e) {
-          // e.preventDefault();
+          e.preventDefault();
           moveEndX = e.originalEvent.changedTouches[0].pageX,
           moveEndY = e.originalEvent.changedTouches[0].pageY,
           X = moveEndX - startX,
