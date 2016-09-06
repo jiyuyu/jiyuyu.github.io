@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
-<html xmlns="http://www.w3.org/1999/xhtml"><head>  
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<html>
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <meta http-equiv="Content-Language" content="zh-CN">  
 <title>纪玉玉个人简历</title>  
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -10,10 +12,10 @@
    
     <nav class="sideGuide">
         <ul>  
-            <li class="on"><a href="javascript:void(0)">个人信息</a><s></s></li>  
-            <li><a href="javascript:void(0)">专业技能</a><s></s></li>  
-            <li><a href="javascript:void(0)">实习经历</a><s></s></li>  
-            <li><a href="javascript:void(0)">项目展示</a><s></s></li>  
+            <li class="on"><a href="javascript:void(0)">个人信息</a></li>  
+            <li><a href="javascript:void(0)">专业技能</a></li>  
+            <li><a href="javascript:void(0)">实习经历</a></li>  
+            <li><a href="javascript:void(0)">项目展示</a></li>  
         </ul>  
     </nav>
     <div id="content">  
@@ -56,25 +58,25 @@
                     <h2>实习经历</h2>
                     <ul>
                         <li>
-                           <h4>2015.7-2015.9</h4> 
+                           <h5>2015.7-2015.9</h5> 
                            <i></i>
                            <p>尚品宅鲜(北京)农业科技有限公司</p>
                            <p class="zhiwei">职位：设计实习生</p>
-                           <p>主要职责：主要负责网站页面设计、产品详情页设计、活动海报设计以及礼品卡设计</p>
+                           <p>主要职责：主要负责网站页面设计以及产品详情页设计</p>
                         </li>
                         <li>
-                           <h4>2015.9-2016.3</h4> 
+                           <h5>2015.9-2016.3</h5> 
                            <i></i>
                            <p>众香国微信公众平台</p>
                            <p class="zhiwei">职位：微信运营</p>
-                           <p>主要职责：主要通过第三方平台有赞商城来运营微信公众号，主要负责产品上架，页面设计以及微信文章的定时推送</p>
+                           <p>主要职责：主要通过第三方平台有赞商城来运营微信公众号，负责页面设计以及微信文章的定时推送</p>
                         </li>
                         <li class="recent">
-                           <h4>2016.7-2016.9</h4> 
+                           <h5>2016.7-2016.9</h5> 
                            <i></i>
                            <p>西安果果庄园电子商务有限公司</p>
                            <p class="zhiwei">职位：设计实习生</p>
-                           <p>主要职责：在公司主要负责移动端和PC端静态页面的实现以及js插件的编写，如选项卡、倒计时以及轮播图等。<br />主要项目：湖南涉外学院科研处、人资处以及学生工作处。果果庄园微信端第三版。
+                           <p>主要职责：主要负责移动端和PC端静态页面的实现以及js插件的编写，如选项卡、倒计时以及轮播图等。<br />主要项目：湖南涉外学院科研处、人资处以及学生工作处。果果庄园微信端第三版。
                             </p>
                         </li>
                     </ul>
@@ -137,8 +139,6 @@
        var index=0;
        var direct=0;
 
-       var navHeight=$("").height();
-       console.log(navHeight);
        var resetFun=function(){
             goTo.each(function(index, ele) {
                 $(this).height($(window).height());    
@@ -147,7 +147,9 @@
 
        resetFun();
 
-       $(window).resize(function(){ resetFun() });  
+       $(window).resize(function(){ 
+          resetFun() 
+        });  
        //屏幕滚动
        var gotoSlide=function(){
             direct=0;
@@ -158,23 +160,53 @@
             
        }
 
-       guideLi.each(function(i,ele) {
+       guideLi.each(function() {
             $(this).click(function(event) {
                 index=guideLi.index($(this));
                 gotoSlide();
-            });           
+            });     
+
        });
 
+       /*移动端*/
+       var  judge=null;
+       $("body").on("touchstart", function(e) {
+          // e.preventDefault();
+          judge=true;
+          startX = e.originalEvent.changedTouches[0].pageX,
+          startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").on("touchmove", function(e) {
+          // e.preventDefault();
+          moveEndX = e.originalEvent.changedTouches[0].pageX,
+          moveEndY = e.originalEvent.changedTouches[0].pageY,
+          X = moveEndX - startX,
+          Y = moveEndY - startY;
+     
+          if ( Math.abs(Y) > Math.abs(X) && Y > 0 && judge==true) {
+              gotoSlide(index--);
+              judge=false;
+          }
+          else if ( Math.abs(Y) > Math.abs(X) && Y < 0  && judge==true) {
+              gotoSlide(index++);
+              judge=false;
+          }
+        });
 
-       window.onmousewheel=document.onmousewheel=function(e){
+         window.onmousewheel=document.onmousewheel=function(e){
             e=e||window.event;
             direct+=(-e.wheelDelta/120);
 
-            if (direct>=8) { gotoSlide(index++) };
-            if (direct<=-8) { gotoSlide(index--) };
+            if (direct>=8) { gotoSlide(index++)};
+            if (direct<=-8) { gotoSlide(index--)};
         
        };   
     })(jQuery); 
+
+
+      
+
+    
 
 
     (function (win) {
@@ -200,8 +232,8 @@
     refreshRem();
 
 })(window);
- 
-    </script>
+
+</script>
  
 </body>  
 </html>  
