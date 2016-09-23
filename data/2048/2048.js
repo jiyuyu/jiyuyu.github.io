@@ -74,7 +74,7 @@ var game={
     startX = e.originalEvent.changedTouches[0].pageX,
     startY = e.originalEvent.changedTouches[0].pageY;
 });
-$("body").on("touchmove", function(e) {
+document.body.addEventListener("touchmove",function(e) {
     e.preventDefault();
     moveEndX = e.originalEvent.changedTouches[0].pageX,
     moveEndY = e.originalEvent.changedTouches[0].pageY,
