@@ -26,10 +26,6 @@ var game={
 	
 	},
 	getInnerHTML:function(){
-		//声明空数组arr
-		//r从0开始，到<RN结束
-		//c从0开始，
-		//
 		var arr=[];
 		for (var r=0;r<this.RN;r++)
 		{
@@ -45,24 +41,13 @@ var game={
 		return html;
 		
 	},
-	//****对象自己的方法，要用自己的任何属性，必须+this
 	//游戏启动的方法
 	start:function(){
-		//找到id为gridPanel的div
 		var div=document.getElementById("gridPanel");
 		div.innerHTML=this.getInnerHTML();
-		//设置div的内容为getInnerHTML的结果
-
-		//设置div的style的宽为：CN*CSIZE+MARGIN*(CN+1)+"px"
 		div.style.width=this.CN*this.CSIZE+this.MARGIN*(this.CN+1)+"px";
-		//设置div的style的高为：RN*CSIZE+MARGIN*(RN+1)+"px"
 		div.style.height=this.RN*this.CSIZE+this.MARGIN*(this.RN+1)+"px";
 		this.state=this.RUNNING;//初始化游戏状态为运行
-		//根据RN和CN初始化data二维数组
-		//外层循环控制行r，从0开始到RN-1结束，同时初始化data为空数组
-		//向data中压入一个空数组[]
-		//内层循环控制列c,从0开始到CN-1结束，同时初始化data为空数组
-		//   设置r行c列的元素为0
 		this.data=[];
 		for (var r=0;r<this.RN;r++)
 		{
@@ -76,7 +61,6 @@ var game={
 		//重置分数
 		this.score=0;
 		this.top1=this.getTop();
-		//调用randomNum()方法，生成2个随机数
 		this.randomNum();
 		this.randomNum();
 
@@ -85,12 +69,37 @@ var game={
 		var me=this;//留住this
 
 		//为当前网页绑定键盘按下事件
+		$("body").on("touchstart", function(e) {
+
+    startX = e.originalEvent.changedTouches[0].pageX,
+    startY = e.originalEvent.changedTouches[0].pageY;
+});
+$("body").on("touchmove", function(e) {
+    e.preventDefault();
+    moveEndX = e.originalEvent.changedTouches[0].pageX,
+    moveEndY = e.originalEvent.changedTouches[0].pageY,
+    X = moveEndX - startX,
+    Y = moveEndY - startY;
+     
+    if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+        me.moveRight();
+    }
+    else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+        me.moveLeft();
+    }
+    else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+        me.moveDown();
+    }
+    else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+        me.moveUp();
+    }
+   
+});
+
 		document.onkeydown=function(){
 			//只有在游戏运行时，才响应
 			if (this.state==this.RUNNING)
 			{
-				//this-->document
-			//获得按键号
 			var e=window.event||arguments[0];
 			switch(e.keyCode){
 				case 37:me.moveLeft();break;
@@ -107,20 +116,14 @@ var game={
 		console.log(this.data.join("\n"));
 	},
 	move:function(iterator){//重构所有移动方法的相同部分
-		//将data转为String，保存在before中
 		var before=String(this.data);
 		iterator.call(this);
-		//将data转为String，保存在after中
 		var after=String(this.data);
-		//如果before不等于after
 		if(before!=after){
-		//	调用randomNum随机生成一个数
 			this.randomNum();
 			animation.start(function(){
 			if(this.isGameOver()){
 				this.state=this.GAMEOVER;
-				//如果score>top1;
-				//将score存入cookie
 				this.score>this.top1&&this.setTop();
 			}
 		//	调用updateView更新页面
@@ -136,15 +139,8 @@ var game={
 				this.moveUpCol(c);
 			}
 		});
-		//调用moveLeftInRow,传入行号r作为参数
-		//(遍历结束)
-		//将data转为字符串保存在变量after中
-		//如果before不等于after
-		//调用randomNum生成一个随机数
-		//调用updataVIEW更新页面
 	},
 	moveUpCol:function(c){
-		//从0开始遍历data中r中的每个格，到<CN-1结束
 		for (var r=0;r<this.RN-1;r++ )
 		{
 			var nextr=this.getNextInCol(r,c);
@@ -153,7 +149,6 @@ var game={
 			}else if (this.data[r][c]==0)
 			{
 				this.data[r][c]=this.data[nextr][c];
-				//找到rc位置的div,加入要移动的任务
 				animation.addTask(
 					document.getElementById("c"+nextr+c),
 					nextr,c, r,c
@@ -167,15 +162,6 @@ var game={
 				this.data[nextr][c]=0;
 			}
 		}
-		//查找下一个不为0的数的位置nextc
-		///如果nextc没找到，就退出循环 
-		//否则
-		//    如果当前元素是0
-		//   就将当前元素设置为nextc位置的元素
-		//   将nextc位置设置为0
-		//    c--;
-		//   否则，如果当前元素等于nextc位置的值，就将当前元素*=2
-		//将nextc位置设置为0
 	},
 	getNextInCol:function(r,c){
 		//nextc从c+1开始遍历r行中剩余元素
@@ -188,9 +174,6 @@ var game={
 			}
 		}
 		return -1;
-		//如果nextc位置的元素不等于0
-		//    返回nextc
-		//(遍历结束)返回-1	
 	},
 	/****************************下移********************/
 	moveDown:function(){
@@ -201,13 +184,6 @@ var game={
 				this.moveDownCol(c);
 			}
 		});
-		
-		//调用moveLeftInRow,传入行号r作为参数
-		//(遍历结束)
-		//将data转为字符串保存在变量after中
-		//如果before不等于after
-		//调用randomNum生成一个随机数
-		//调用updataVIEW更新页面
 		
 	},
 	moveDownCol:function(c){
@@ -233,15 +209,6 @@ var game={
 				this.data[prevc][c]=0;
 			}
 		}
-		//查找下一个不为0的数的位置nextc
-		///如果nextc没找到，就退出循环 
-		//否则
-		//    如果当前元素是0
-		//   就将当前元素设置为nextc位置的元素
-		//   将nextc位置设置为0
-		//    c--;
-		//   否则，如果当前元素等于nextc位置的值，就将当前元素*=2
-		//将nextc位置设置为0
 	},
 	getPrevInCol:function(r,c){
 		for (var prevc=r-1;prevc>=0;prevc--)
@@ -255,9 +222,6 @@ var game={
 	},
 	/****************************右移********************/
 	moveRight:function(){//右移所有行
-		//将data转为String，保存在before中
-		//遍历data中每一行
-		//调用moveRightInRow
 		this.move(function(){
 			for (var r=0;r<this.RN;r++)
 			{
@@ -301,14 +265,7 @@ var game={
 	},
 	/****************************左移********************/
 	moveLeft:function(){//左移所有行
-		//将data转为字符串保存在变量before中
-		//遍历data中每一行
-		//调用moveLeftInRow,传入行号r作为参数
-		//(遍历结束)
-		//将data转为字符串保存在变量after中
-		//如果before不等于after
-		//调用randomNum生成一个随机数
-		//调用updataVIEW更新页面
+	
 		this.move(function(){
 			for (var r=0;r<this.RN;r++)
 			{
@@ -319,16 +276,6 @@ var game={
 	},
 	moveLeftInRow:function(r){//左移第r行
 
-		//从0开始遍历data中r中的每个格，到<CN-1结束
-		//查找下一个不为0的数的位置nextc
-		///如果nextc没找到，就退出循环 
-		//否则
-		//    如果当前元素是0
-		//   就将当前元素设置为nextc位置的元素
-		//   将nextc位置设置为0
-		//    c--;
-		//   否则，如果当前元素等于nextc位置的值，就将当前元素*=2
-		//将nextc位置设置为0
 		for (var c=0;c<this.CN-1;c++)
 		{
 			var nextc=this.getNextInRow(r,c);//找下一个
@@ -360,19 +307,12 @@ var game={
 			}
 		}
 		return -1;
-		
-		//如果nextc位置的元素不等于0
-		//    返回nextc
-		//(遍历结束)返回-1
 	},
 	randomNum:function(){//在随机空白位置生成2或者4
 		for (; ; )
 		{
-			//在0~RN-1之间生成一个随机数r
 			var r=parseInt(Math.random()*this.RN);
-			//在0~CN-1之间生成一个随机数c
 			var c=parseInt(Math.random()*this.CN);
-			//如果data中r行c列的值为0
 			if (this.data[r][c]==0)
 			{
 				var g=Math.random();
@@ -384,62 +324,45 @@ var game={
 					this.data[r][c]=4;
 					break;
 				}
-				// 随机一个数字，如果<0.5,就设置data的r行c列为2，否则设置为4
 			}
 			//退出循环
 		}
 	},
 	updateView:function(){//将data中的数据更新到页面
-		//遍历data中的每个元素
 		for (var r=0;r<this.RN;r++)
 		{
 			for (var c=0;c<this.CN;c++)
 			{
-				//找到页面上id为'c'+r+c的div
 				var div=document.getElementById("c"+r+c);
-				//如果data中r行c列的元素不等于0
 				if(this.data[r][c]!=0)
 				{
-					//  设置div的内容为data中的r行c列的值
 					div.innerHTML=this.data[r][c];
-					//  设置div的className属性为"cell n"+data中r行c列的值
 					div.className="cell n"+this.data[r][c];
 				}else{
-					//否则
-					//设置div的内容为""
 					div.innerHTML="";
-					//设置div的className为"cell"
 					div.className="cell";
 				}
 			}
-			//将游戏的分数显示在界面上
-			//找到id为score的span，直接设置其内容为游戏对象的scroe
+		
 			document.getElementById("score").innerHTML=this.score;
-			//显示最高分
+			
 			document.getElementById("top").innerHTML=this.top1;
-			//根据游戏状态，修改页面
-			//找到id为gameOver的div，
+		
 			var div=document.getElementById("gameover");
 			if (this.state==this.RUNNING)
 			{
 				div.style.display="none";
-				//隐藏div
+			
 			}else{
 				div.style.display="block";
 				document.getElementById("final").innerHTML=this.score;
-				//显示div
-				//找到id为final的span，直接设置内容为score
+			
 			}
 
 		}
 	},
 	isGameOver:function(){
-		//判断当前游戏是否结束
-		//如果当前元素是0，返回false
-		//否则，如果c<CN-1,且当前值等于右侧值
-		//    返回false
-		//否则，如果r<RN-1,且当前值等于下方值
-		//    返回false
+	
 		for (var r=0;r<this.RN;r++)
 		{
 			for (var c=0;c<this.CN;c++)
