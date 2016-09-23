@@ -69,7 +69,7 @@ var game={
 		var me=this;//留住this
 
 		//为当前网页绑定键盘按下事件
-		$("body").on("touchstart", function(e) {
+		document.body.addEventListener("touchstart", function(e) {
 
     startX = e.originalEvent.changedTouches[0].pageX,
     startY = e.originalEvent.changedTouches[0].pageY;
